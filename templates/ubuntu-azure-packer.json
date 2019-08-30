@@ -1,0 +1,26 @@
+{
+    "builders": [
+        {
+            "type": "azure-arm",
+            "os_type": "Linux",
+            "image_offer": "UbuntuServer",
+            "image_publisher": "Canonical",
+            "image_sku": "18.04-LTS",
+            "cloud_environment_name": "AzureUSGovernmentCloud",
+            "vm_size": "Standard_DS2_v2",
+            "build_resource_group_name": "packer1-dev-rg",
+            "managed_image_resource_group_name": "packer1-dev-rg",
+            "managed_image_name": "CustomUbuntu"
+        }
+    ],
+    "provisioners": [
+        {
+            "execute_command": "chmod +x {{ .Path }}; {{ .Vars }} sudo -E sh '{{ .Path }}'",
+            "inline": [
+              "/usr/sbin/waagent -force -deprovision+user && export HISTSIZE=0 && sync"
+            ],
+            "inline_shebang": "/bin/sh -x",
+            "type": "shell"
+        }
+    ]
+}
