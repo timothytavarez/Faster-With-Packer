@@ -1,0 +1,20 @@
+{
+    "builders": [
+    {
+        "type": "azure-arm",
+        "managed_image_name": "packerfast-server2019",
+        "resource_group_name": "packer1-dev-rg",
+        "location": "usdodeast",
+        "vm_size": "DS2_v2",
+        "managed_image_resource_group_name": "packer1-dev-rg",
+        "cloud_environment_name": "AzureUSGovernment",
+        "os_type": "Windows",
+        "image_publisher": "MicrosoftWindowsServer",
+        "image_offer": "WindowsServer",
+        "image_sku": "2019-Datacenter",
+        "azure_tags": {
+            "environment": "dev"
+        }
+    }
+    ]
+}
