@@ -1,0 +1,39 @@
+{
+    "builders": [
+        {
+            "vm_name": "server-2016-vm",
+            "type": "hyperv-iso",
+            "communicator": "winrm",
+            "winrm_username": "T2Admin",
+            "winrm_password": "F@$t3RP4CK3R",
+            "iso_url": "C:\/Dev\/iso\/en_windows_server_2016_x64_dvd_9718492.iso",
+            "secondary_iso_images": [
+                "C:\/Dev\/faster-with-packer\/windows\/server-2016\/answer.iso"
+            ],
+            "iso_checksum": "795954551DA6C44647E567C3F74E03A78FF7525F7C4E9C8CA23076E016A8234D",
+            "iso_checksum_type": "SHA256",
+            "http_directory": "./windows/common/http/",
+            "boot_wait": "0s",
+            "boot_command": [
+              "a<wait>a<wait>a"
+            ],
+            "memory": 4048,
+            "cpus": 2,
+            "disk_size": 20000,
+            "use_fixed_vhd_format": true,
+            "skip_compaction": true,
+            "differencing_disk": false,
+            "generation": 1
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "powershell",
+            "elevated_user": "T2Admin",
+            "elevated_password": "F@$t3RP4CK3R",
+            "scripts": [
+                "C:\/Dev\/packer\/windows\/common\/http\/Run-Sysprep.ps1"
+            ]
+        }
+    ]
+}

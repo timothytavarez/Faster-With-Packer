@@ -1,0 +1,7 @@
+
+# Ignore Packer output directories
+packer_cache/
+output-hyperv-iso/
+windows/server-2016/answer.iso
+
+packer.exe

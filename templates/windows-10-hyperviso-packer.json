@@ -1,0 +1,37 @@
+{
+    "builders": [
+        {
+            "vm_name": "win10-1903",
+            "type": "hyperv-iso",
+            "communicator": "winrm",
+            "winrm_username": "T2Admin",
+            "winrm_password": "F@$t3RP4CK3R",
+            "iso_url": "E:\/ISO\/en_windows_10_business_editions_version_1903_x64_dvd_37200948.iso",
+            "secondary_iso_images": [
+                "C:\/Dev\/packer\/windows\/windows-10\/answer.iso"
+            ],
+            "iso_checksum": "50E0139646630F94D9036EDAAB1B91E9067741A196AA6205550659E867518BAE",
+            "iso_checksum_type": "SHA256",
+            "http_directory": "./windows/common/http/",
+            "boot_wait": "0s",
+            "boot_command": [
+              "a<wait>a<wait>a"
+            ],
+            "memory": 4048,
+            "cpus": 2,
+            "disk_size": 20000,
+            "generation": 2
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "powershell",
+            "elevated_user": "T2Admin",
+            "elevated_password": "F@$t3RP4CK3R",
+            "scripts": [
+                "C:\/Dev\/packer\/windows\/common\/http\/Configure-AzureVM.ps1",
+                "C:\/Dev\/packer\/windows\/common\/http\/Run-Sysprep.ps1"
+            ]
+        }
+    ]
+}

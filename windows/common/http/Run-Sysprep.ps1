@@ -1,0 +1,1 @@
+C:\Windows\system32\sysprep\sysprep.exe /generalize /shutdown /oobe /unnattend:E:/Run-Sysprep.ps1
